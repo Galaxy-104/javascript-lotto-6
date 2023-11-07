@@ -28,7 +28,8 @@ class App {
     await this.setGame();
     this.#numberOfLotto = await this.#setGame.setNumOfLotto(this.#amounts);
     await this.#issueLottos(this.#numberOfLotto);
-
+    this.#output.printPurchase(this.#numberOfLotto);
+    
     this.result();
   }
 
@@ -39,7 +40,7 @@ class App {
   }
 
   async #issueLottos(number){
-    this.#output.printPurchase(number);
+    
 
     const lottos = []
     let counter = 0
@@ -58,7 +59,6 @@ class App {
   async result(){
     const compare = new Compare(this.#lotto, this.#bonus);
     this.#result = await compare.compareLotto(this.#lottos);
-    
   }
   
 
